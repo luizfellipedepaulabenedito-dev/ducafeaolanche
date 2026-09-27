@@ -116,7 +116,7 @@
   .menu-section{}
   .menu-head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:44px; flex-wrap:wrap;}
   .menu-head h2{font-size:2.1rem; margin-bottom:0;}
-  .menu-groups{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  .menu-groups{display:grid; grid-template-columns:repeat(3, 1fr); gap:40px;}
   .menu-group h3{font-size:1.3rem; margin-bottom:18px; padding-bottom:10px; border-bottom:1px solid var(--border);}
   .menu-item{display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid var(--border);}
   .menu-item:last-child{border-bottom:none;}
@@ -125,7 +125,8 @@
   .menu-item .price{font-weight:600; white-space:nowrap; padding-left:12px;}
   .menu-cta{margin-top:40px; background:var(--surface-2); border-radius:var(--radius); padding:32px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;}
   .menu-cta p{margin:0; max-width:46ch;}
-  @media (max-width:760px){ .menu-groups{grid-template-columns:1fr; gap:36px;} }
+  @media (max-width:960px){ .menu-groups{grid-template-columns:1fr 1fr; gap:36px;} }
+  @media (max-width:640px){ .menu-groups{grid-template-columns:1fr; gap:36px;} }
 
   /* Localização */
   .location{background:var(--surface);}
@@ -230,23 +231,50 @@
           <div class="menu-item"><span class="name">Cuscuz médio</span><span class="price">R$ 15,00</span></div>
           <div class="menu-item"><span class="name">Torta de frango (pedaço)</span><span class="price">R$ 9,00</span></div>
           <div class="menu-item"><span class="name">Coxinha de frango</span><span class="price">R$ 7,50</span></div>
+          <div class="menu-item"><span class="name">Enroladinho de presunto e queijo</span><span class="price">R$ 7,50</span></div>
+          <div class="menu-item"><span class="name">Esfiha de carne</span><span class="price">R$ 7,50</span></div>
           <div class="menu-item"><span class="name">Tapioca salgada grande<span class="note">escolha o sabor</span></span><span class="price">R$ 18,00</span></div>
+          <div class="menu-item"><span class="name">Tapioca salgada média<span class="note">escolha o sabor</span></span><span class="price">R$ 15,00</span></div>
           <div class="menu-item"><span class="name">Tapioca doce<span class="note">escolha o sabor</span></span><span class="price">R$ 18,00</span></div>
         </div>
         <div class="menu-group">
           <h3>Ao Lanche</h3>
           <div class="menu-item"><span class="name">Pastel de frango c/ catupiry</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de frango</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de presunto e queijo</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de pizza</span><span class="price">R$ 15,00</span></div>
           <div class="menu-item"><span class="name">Pastel de carne c/ queijo</span><span class="price">R$ 15,00</span></div>
-          <div class="menu-item"><span class="name">Pastel de calabresa c/ queijo</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de carne</span><span class="price">R$ 15,00</span></div>
           <div class="menu-item"><span class="name">Pastel de carne seca</span><span class="price">R$ 18,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de palmito</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de 2 queijos</span><span class="price">R$ 15,00</span></div>
           <div class="menu-item"><span class="name">Pastel de 3 queijos</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de calabresa c/ queijo</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de calabresa</span><span class="price">R$ 15,00</span></div>
           <div class="menu-item"><span class="name">Pastéis doces<span class="note">escolha o sabor</span></span><span class="price">R$ 16,00</span></div>
           <div class="menu-item"><span class="name">Hot dog<span class="note">pão, salsicha, purê, milho e vinagrete</span></span><span class="price">R$ 15,00</span></div>
         </div>
+        <div class="menu-group">
+          <h3>Bebidas</h3>
+          <div class="menu-item"><span class="name">Suco natural 500ml</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Suco natural 1 litro</span><span class="price">R$ 22,00</span></div>
+          <div class="menu-item"><span class="name">Suco caixinha 1L</span><span class="price">R$ 10,00</span></div>
+          <div class="menu-item"><span class="name">Suco Del Valle lata</span><span class="price">R$ 8,00</span></div>
+          <div class="menu-item"><span class="name">Suco Del Valle Kapo</span><span class="price">R$ 3,50</span></div>
+          <div class="menu-item"><span class="name">Coca-Cola 2 litros</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Fanta laranja 2 litros</span><span class="price">R$ 13,00</span></div>
+          <div class="menu-item"><span class="name">Guaraná Antarctica 2 litros</span><span class="price">R$ 13,00</span></div>
+          <div class="menu-item"><span class="name">Refrigerante lata</span><span class="price">R$ 7,00</span></div>
+          <div class="menu-item"><span class="name">Refrigerante mini</span><span class="price">R$ 4,00</span></div>
+          <div class="menu-item"><span class="name">Energético</span><span class="price">R$ 10,00</span></div>
+          <div class="menu-item"><span class="name">Água mineral 500ml</span><span class="price">R$ 3,50</span></div>
+          <div class="menu-item"><span class="name">Água mineral com gás 500ml</span><span class="price">R$ 3,50</span></div>
+          <div class="menu-item"><span class="name">Água com gás 1,5L</span><span class="price">R$ 7,00</span></div>
+        </div>
       </div>
       <div class="menu-cta">
-        <p>Este é um recorte do cardápio. Sucos, refrigerantes e a lista completa de salgados e pastéis estão no cardápio digital.</p>
-        <a class="btn btn-primary" id="menuLinkCta" href="#" target="_blank" rel="noopener">Ver cardápio completo</a>
+        <p>Quer pedir agora? Chame no WhatsApp com os itens escolhidos e o endereço de entrega.</p>
+        <a class="btn btn-primary" id="menuLinkCta" href="#" target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
       </div>
     </div>
   </section>
@@ -322,13 +350,14 @@
   const STORE = {
     whatsapp: "https://wa.me/5535998850038",
     phoneTel: "tel:+5535998850038",
-    cardapio: "https://cardapio.cliqueiachei.com/local/57250",
     maps: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Rua Fernando Rafael Macedo, 365 - Planalto, Carmo do Rio Claro - MG")
   };
 
-  document.getElementById('menuLinkTop').href = STORE.cardapio;
-  document.getElementById('menuLinkHero').href = STORE.cardapio;
-  document.getElementById('menuLinkCta').href = STORE.cardapio;
+  document.getElementById('menuLinkTop').href = "#cardapio";
+  document.getElementById('menuLinkTop').removeAttribute('target');
+  document.getElementById('menuLinkHero').href = "#cardapio";
+  document.getElementById('menuLinkHero').removeAttribute('target');
+  document.getElementById('menuLinkCta').href = STORE.whatsapp;
   document.getElementById('waLinkHero').href = STORE.whatsapp;
   document.getElementById('waLinkLoc').href = STORE.whatsapp;
   document.getElementById('waFloat').href = STORE.whatsapp;

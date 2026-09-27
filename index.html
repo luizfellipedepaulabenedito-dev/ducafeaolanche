@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Du Café Ao Lanche — Padaria e Lanchonete em Carmo do Rio Claro, MG</title>
+<meta name="description" content="Du Café Ao Lanche: padaria e lanchonete em Carmo do Rio Claro, MG. Salgados, pastéis, tapiocas e bebidas. Peça pelo cardápio digital ou fale no WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================
+     CONFIGURAÇÃO DA LOJA (fácil de editar)
+     Para trocar dados, edite apenas os valores abaixo.
+     ============================ */
+  :root{
+    --bg:#F7F7F5;
+    --surface:#FFFFFF;
+    --surface-2:#EFE8E1;
+    --btn:#B99A80;
+    --btn-hover:#AA896F;
+    --btn-text:#2F2722;
+    --text:#302A26;
+    --text-2:#6C625B;
+    --border:#E5DFD9;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Manrope',sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    color:var(--text);
+    margin:0 0 0.5em;
+    letter-spacing:0.2px;
+  }
+  p{color:var(--text-2); margin:0 0 1em;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .container{max-width:1160px; margin:0 auto; padding:0 24px;}
+  section{padding:88px 0;}
+  :focus-visible{outline:2px solid var(--btn-hover); outline-offset:3px;}
+
+  /* Botões */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 30px; border-radius:999px; font-weight:600; font-size:0.95rem;
+    border:1px solid transparent; cursor:pointer; transition:background .25s ease, transform .15s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--btn); color:var(--btn-text);}
+  .btn-primary:hover{background:var(--btn-hover); transform:translateY(-1px);}
+  .btn-secondary{background:transparent; color:var(--text); border-color:var(--border);}
+  .btn-secondary:hover{background:var(--surface-2);}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:40; background:rgba(247,247,245,0.92);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--border);
+  }
+  .nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1160px; margin:0 auto;}
+  .brand{font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; color:var(--text);}
+  .nav-links{display:flex; align-items:center; gap:36px;}
+  .nav-links a.nav-item{font-size:0.95rem; font-weight:500; color:var(--text);}
+  .nav-links a.nav-item:hover{color:var(--btn-hover);}
+  .menu-toggle{display:none; background:none; border:none; cursor:pointer; padding:8px;}
+  .menu-toggle span{display:block; width:22px; height:2px; background:var(--text); margin:5px 0; transition:transform .2s ease, opacity .2s ease;}
+  .mobile-panel{display:none; flex-direction:column; gap:4px; padding:0 24px 20px;}
+  .mobile-panel a{padding:12px 0; border-top:1px solid var(--border); font-weight:500;}
+
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+    header.open .mobile-panel{display:flex;}
+  }
+
+  /* Hero */
+  .hero{padding:64px 0 96px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;}
+  .eyebrow{font-size:0.95rem; color:var(--text-2); margin-bottom:18px; font-weight:500;}
+  .hero h1{font-size:clamp(2.4rem, 4.4vw, 3.4rem); line-height:1.12; max-width:11ch;}
+  .hero p.lead{font-size:1.05rem; max-width:44ch; margin-bottom:32px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-img-wrap{border-radius:28px; overflow:hidden; aspect-ratio:4/5; box-shadow:0 24px 48px -24px rgba(48,42,38,0.28);}
+  .hero-img-wrap img{width:100%; height:100%; object-fit:cover;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr; gap:36px;}
+    .hero{padding:44px 0 64px;}
+    .hero-img-wrap{aspect-ratio:16/11; order:-1;}
+    .hero h1{max-width:none;}
+  }
+
+  /* Apresentação */
+  .about{background:var(--surface);}
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start;}
+  .about h2{font-size:2.1rem;}
+  .about p{font-size:1.02rem; max-width:52ch;}
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr; gap:24px;} }
+
+  /* Cardápio */
+  .menu-section{}
+  .menu-head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:44px; flex-wrap:wrap;}
+  .menu-head h2{font-size:2.1rem; margin-bottom:0;}
+  .menu-groups{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  .menu-group h3{font-size:1.3rem; margin-bottom:18px; padding-bottom:10px; border-bottom:1px solid var(--border);}
+  .menu-item{display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid var(--border);}
+  .menu-item:last-child{border-bottom:none;}
+  .menu-item .name{font-weight:500; font-size:0.98rem;}
+  .menu-item .note{color:var(--text-2); font-size:0.85rem; display:block; margin-top:2px;}
+  .menu-item .price{font-weight:600; white-space:nowrap; padding-left:12px;}
+  .menu-cta{margin-top:40px; background:var(--surface-2); border-radius:var(--radius); padding:32px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;}
+  .menu-cta p{margin:0; max-width:46ch;}
+  @media (max-width:760px){ .menu-groups{grid-template-columns:1fr; gap:36px;} }
+
+  /* Localização */
+  .location{background:var(--surface);}
+  .location-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .info-block{margin-bottom:28px;}
+  .info-block h3{font-size:1.05rem; font-family:'Manrope',sans-serif; font-weight:600; margin-bottom:8px;}
+  .info-block p{margin-bottom:4px; font-size:0.98rem;}
+  .hours-row{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:0.95rem;}
+  .hours-row:last-child{border-bottom:none;}
+  .hours-row span:first-child{color:var(--text);}
+  .hours-row span:last-child{color:var(--text-2);}
+  .location-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:28px;}
+  .map-card{border-radius:var(--radius); background:var(--surface-2); padding:32px; height:100%;}
+  @media (max-width:860px){ .location-grid{grid-template-columns:1fr; gap:32px;} }
+
+  /* Footer */
+  footer{background:var(--surface-2); border-top:1px solid var(--border); padding:48px 0 32px;}
+  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; margin-bottom:24px;}
+  .footer-brand{font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600;}
+  .footer-meta{color:var(--text-2); font-size:0.92rem; margin-top:4px;}
+  .footer-contacts{display:flex; gap:20px; flex-wrap:wrap; font-size:0.92rem;}
+  .footer-contacts a:hover{color:var(--btn-hover);}
+  .footer-bottom{border-top:1px solid var(--border); padding-top:20px; font-size:0.82rem; color:var(--text-2);}
+
+  /* WhatsApp flutuante */
+  .wa-float{
+    position:fixed; bottom:22px; right:22px; z-index:50;
+    width:56px; height:56px; border-radius:50%; background:var(--btn);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px -8px rgba(48,42,38,0.4);
+    transition:background .2s ease, transform .15s ease;
+  }
+  .wa-float:hover{background:var(--btn-hover); transform:translateY(-2px);}
+  .wa-float svg{width:26px; height:26px;}
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="nav-wrap">
+    <a href="#top" class="brand">Du Café Ao Lanche</a>
+    <nav class="nav-links">
+      <a class="nav-item" href="#top">Início</a>
+      <a class="nav-item" href="#cardapio">Cardápio</a>
+      <a class="nav-item" href="#contato">Contato</a>
+      <a class="btn btn-primary" id="menuLinkTop" href="#" target="_blank" rel="noopener">Ver cardápio</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#top">Início</a>
+    <a href="#cardapio">Cardápio</a>
+    <a href="#contato">Contato</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Padaria e lanchonete em Carmo do Rio Claro</p>
+        <h1>Seu dia pede uma pausa.</h1>
+        <p class="lead">Pão de queijo quentinho, tapiocas, pastéis e um bom café — tudo pertinho, no Planalto. Venha conhecer a Du Café Ao Lanche.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" id="menuLinkHero" href="#" target="_blank" rel="noopener">Ver cardápio</a>
+          <a class="btn btn-secondary" id="waLinkHero" href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80" alt="Café coado sendo servido — imagem ilustrativa" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- APRESENTAÇÃO -->
+  <section class="about">
+    <div class="container about-grid">
+      <div>
+        <h2>Do lado da sua rotina</h2>
+      </div>
+      <div>
+        <p>A Du Café Ao Lanche fica na Rua Fernando Rafael Macedo, no bairro Planalto, em Carmo do Rio Claro. Um lugar simples para começar o dia com um salgado fresco e um café, ou parar no meio da tarde para um lanche rápido.</p>
+        <p>Atendimento também com entrega — para detalhes de área e prazos, é só chamar no WhatsApp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDÁPIO -->
+  <section class="menu-section" id="cardapio" style="background:var(--bg);">
+    <div class="container">
+      <div class="menu-head">
+        <h2>Cardápio</h2>
+      </div>
+      <div class="menu-groups">
+        <div class="menu-group">
+          <h3>Du Café</h3>
+          <div class="menu-item"><span class="name">Pão de queijo recheado<span class="note">escolha o recheio</span></span><span class="price">R$ 7,50</span></div>
+          <div class="menu-item"><span class="name">Cuscuz grande</span><span class="price">R$ 20,00</span></div>
+          <div class="menu-item"><span class="name">Cuscuz médio</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Torta de frango (pedaço)</span><span class="price">R$ 9,00</span></div>
+          <div class="menu-item"><span class="name">Coxinha de frango</span><span class="price">R$ 7,50</span></div>
+          <div class="menu-item"><span class="name">Tapioca salgada grande<span class="note">escolha o sabor</span></span><span class="price">R$ 18,00</span></div>
+          <div class="menu-item"><span class="name">Tapioca doce<span class="note">escolha o sabor</span></span><span class="price">R$ 18,00</span></div>
+        </div>
+        <div class="menu-group">
+          <h3>Ao Lanche</h3>
+          <div class="menu-item"><span class="name">Pastel de frango c/ catupiry</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de carne c/ queijo</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de calabresa c/ queijo</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de carne seca</span><span class="price">R$ 18,00</span></div>
+          <div class="menu-item"><span class="name">Pastel de 3 queijos</span><span class="price">R$ 15,00</span></div>
+          <div class="menu-item"><span class="name">Pastéis doces<span class="note">escolha o sabor</span></span><span class="price">R$ 16,00</span></div>
+          <div class="menu-item"><span class="name">Hot dog<span class="note">pão, salsicha, purê, milho e vinagrete</span></span><span class="price">R$ 15,00</span></div>
+        </div>
+      </div>
+      <div class="menu-cta">
+        <p>Este é um recorte do cardápio. Sucos, refrigerantes e a lista completa de salgados e pastéis estão no cardápio digital.</p>
+        <a class="btn btn-primary" id="menuLinkCta" href="#" target="_blank" rel="noopener">Ver cardápio completo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO -->
+  <section class="location" id="contato">
+    <div class="container location-grid">
+      <div>
+        <h2 style="font-size:2.1rem;">Onde estamos</h2>
+        <div class="info-block">
+          <h3>Endereço</h3>
+          <p>Rua Fernando Rafael Macedo, 365 — Planalto</p>
+          <p>Carmo do Rio Claro — MG</p>
+        </div>
+        <div class="info-block">
+          <h3>Horário de funcionamento</h3>
+          <div class="hours-row"><span>Segunda a sexta</span><span>06h às 18h</span></div>
+          <div class="hours-row"><span>Sábado</span><span>06h às 19h30</span></div>
+          <div class="hours-row"><span>Domingo</span><span>07h às 11h</span></div>
+          <div class="hours-row"><span>Feriados</span><span>Consulte os horários pelo WhatsApp</span></div>
+        </div>
+        <div class="location-actions">
+          <a class="btn btn-primary" id="mapsLink" href="#" target="_blank" rel="noopener">Como chegar</a>
+          <a class="btn btn-secondary" id="callLink" href="#">Ligar</a>
+          <a class="btn btn-secondary" id="waLinkLoc" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <div class="map-card">
+        <div class="info-block">
+          <h3>Contato</h3>
+          <p>Telefone / WhatsApp: (35) 99885-0038</p>
+          <p>E-mail: ducafeaolanche@gmail.com</p>
+          <p>Instagram: @ducafeaolanche100segredo</p>
+        </div>
+        <div class="info-block">
+          <h3>Formas de pagamento</h3>
+          <p>Cartão de crédito, cartão de débito, PIX e dinheiro</p>
+        </div>
+        <div class="info-block" style="margin-bottom:0;">
+          <h3>Entrega</h3>
+          <p>Atendemos com entrega. Para áreas e prazos, confirme pelo WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Du Café Ao Lanche</div>
+        <div class="footer-meta">Padaria e lanchonete — Carmo do Rio Claro, MG</div>
+      </div>
+      <div class="footer-contacts">
+        <a id="footerCall" href="#">(35) 99885-0038</a>
+        <a href="mailto:ducafeaolanche@gmail.com">ducafeaolanche@gmail.com</a>
+        <a href="https://www.instagram.com/ducafeaolanche100segredo" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">Rua Fernando Rafael Macedo, 365 — Planalto, Carmo do Rio Claro — MG</div>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" fill="#2F2722" xmlns="http://www.w3.org/2000/svg"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.2.6 4.27 1.63 6.05L4 29l8.16-1.6a12.9 12.9 0 0 0 3.86.59h.01C22.6 27.99 28 22.6 28 15.98 28 9.4 22.63 3 16.02 3zm7.13 17.17c-.3.85-1.72 1.6-2.38 1.7-.6.09-1.37.13-2.2-.14-.5-.16-1.15-.37-1.98-.73-3.48-1.5-5.75-5-5.92-5.24-.17-.24-1.42-1.89-1.42-3.6 0-1.72.9-2.56 1.22-2.91.32-.35.7-.44.93-.44.23 0 .47 0 .67.01.22.01.5-.08.79.6.3.7 1.01 2.42 1.1 2.6.09.17.15.38.03.62-.12.24-.18.38-.36.58-.18.2-.38.45-.54.61-.18.18-.37.37-.16.73.21.35.93 1.53 2 2.48 1.37 1.22 2.53 1.6 2.88 1.78.35.18.56.15.77-.09.21-.24.9-1.05 1.14-1.41.24-.35.47-.29.8-.17.32.12 2.05.97 2.4 1.14.35.18.58.26.67.41.09.15.09.85-.21 1.7z"/></svg>
+</a>
+
+<script>
+  // ============================
+  // CONFIGURAÇÃO DA LOJA — edite aqui se algo mudar
+  // ============================
+  const STORE = {
+    whatsapp: "https://wa.me/5535998850038",
+    phoneTel: "tel:+5535998850038",
+    cardapio: "https://cardapio.cliqueiachei.com/local/57250",
+    maps: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Rua Fernando Rafael Macedo, 365 - Planalto, Carmo do Rio Claro - MG")
+  };
+
+  document.getElementById('menuLinkTop').href = STORE.cardapio;
+  document.getElementById('menuLinkHero').href = STORE.cardapio;
+  document.getElementById('menuLinkCta').href = STORE.cardapio;
+  document.getElementById('waLinkHero').href = STORE.whatsapp;
+  document.getElementById('waLinkLoc').href = STORE.whatsapp;
+  document.getElementById('waFloat').href = STORE.whatsapp;
+  document.getElementById('mapsLink').href = STORE.maps;
+  document.getElementById('callLink').href = STORE.phoneTel;
+  document.getElementById('footerCall').href = STORE.phoneTel;
+
+  const toggle = document.getElementById('menuToggle');
+  const header = document.getElementById('site-header');
+  toggle.addEventListener('click', () => {
+    const isOpen = header.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+  document.querySelectorAll('.mobile-panel a').forEach(a => {
+    a.addEventListener('click', () => { header.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+  });
+</script>
+
+</body>
+</html>
